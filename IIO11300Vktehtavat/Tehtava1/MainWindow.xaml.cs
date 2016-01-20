@@ -1,29 +1,16 @@
 ﻿/*
-* Copyright (C) JAMK/IT/Esa Salmikangas
+* Copyright (C) JAMK/IT/Teemu Tuomela
 * This file is part of the IIO11300 course project.
-* Created: 12.1.2016 Modified: 13.1.2016
-* Authors: Tero ,Esa Salmikangas
+* Created: 14.1.2016
+* Modified: 14.1.2016
+* Authors: Teemu Tuomela
 */
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Tehtava1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -33,25 +20,33 @@ namespace Tehtava1
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
             try
             {
-                double result;
-                result = BusinessLogicWindow.CalculatePerimeter(1, 1);
+                double width = Double.Parse(txtWidth.Text);
+                double height = Double.Parse(txtHeight.Text);
+                double frameWidth = Double.Parse(txtFrameWidth.Text);
+                double windowArea = BusinessLogicWindow.CalculateWindowArea(width, height) * (1E-6);
+                double frameArea = BusinessLogicWindow.CalculateFrameArea(width, height, frameWidth) * (1E-6);
+                double framePerimeter = BusinessLogicWindow.CalculatePerimeter(width, height, frameWidth);
+
+                txtWindowArea.Text = windowArea.ToString() + "m\xB2";
+                txtFrameArea.Text = frameArea.ToString() + "m\xB2";
+                txtFramePerimeter.Text = framePerimeter.ToString() + "mm";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                //yield to an user that everything okay
             }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void textbox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as System.Windows.Controls.TextBox).SelectAll();
         }
     }    
 }
