@@ -2,14 +2,14 @@
 * Copyright (C) JAMK/IT/Teemu Tuomela
 * This file is part of the IIO11300 course project.
 * Created: 14.1.2016
-* Modified: 14.1.2016
+* Modified: 21.1.2016
 * Authors: Teemu Tuomela
 */
 
 using System;
 using System.Windows;
 
-namespace Tehtava1
+namespace JAMK.IT.IIO11300
 {
     public partial class MainWindow : Window
     {
@@ -22,9 +22,9 @@ namespace Tehtava1
         {
             try
             {
-                double width = Double.Parse(txtWidth.Text);
-                double height = Double.Parse(txtHeight.Text);
-                double frameWidth = Double.Parse(txtFrameWidth.Text);
+                double width = double.Parse(txtWidth.Text);
+                double height = double.Parse(txtHeight.Text);
+                double frameWidth = double.Parse(txtFrameWidth.Text);
                 double windowArea = BusinessLogicWindow.CalculateWindowArea(width, height) * (1E-6);
                 double frameArea = BusinessLogicWindow.CalculateFrameArea(width, height, frameWidth) * (1E-6);
                 double framePerimeter = BusinessLogicWindow.CalculatePerimeter(width, height, frameWidth);
@@ -47,6 +47,16 @@ namespace Tehtava1
         private void textbox_GotFocus(object sender, RoutedEventArgs e)
         {
             (sender as System.Windows.Controls.TextBox).SelectAll();
+        }
+
+        private void btnCalculateOO_Click(object sender, RoutedEventArgs e)
+        {
+            // Olion avulla lasketaan pinta-ala, piiri ja hinta
+            Ikkuna ikkuna = new Ikkuna();
+            ikkuna.Korkeus = double.Parse(txtHeight.Text);
+            ikkuna.Leveys  = double.Parse(txtWidth.Text);
+            double area = ikkuna.PintaAla * 1E-6;
+            txtWindowArea.Text = area.ToString() + "m\xB2";
         }
     }    
 }
