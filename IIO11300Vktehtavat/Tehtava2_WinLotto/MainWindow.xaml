@@ -11,7 +11,8 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Rivit" VerticalAlignment="Top" Margin="10,43,0,0" FontSize="21.333"/>
         <Button x:Name="btnDraw" Content="Arvo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,94,0,0" Click="btnDraw_Click" FontSize="16" TabIndex="2"/>
         <Button x:Name="btnClear" Content="Tyhjennä" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="90,94,0,0" Click="btnClear_Click" FontSize="16" Grid.ColumnSpan="2" TabIndex="3"/>
-        <ComboBox x:Name="cbType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="90,11,0,0" FontSize="16" Grid.ColumnSpan="2" SelectedIndex="0" TabIndex="0"/>
+        <ComboBox x:Name="cbType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="90,11,0,0" FontSize="16" Grid.ColumnSpan="2" SelectedIndex="0" TabIndex="0">
+        </ComboBox>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,139,0,0" Text="Tulokset" FontSize="21.333"/>
         <Button x:Name="btnClose" Content="Sulje" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnClose_Click" FontSize="16" Margin="281,393,10,10" TabIndex="5" Padding="1"/>
         <TextBox x:Name="txtDraws" Height="188" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,172,10,0" HorizontalContentAlignment="Stretch" Grid.ColumnSpan="2" FontSize="18.667" TabIndex="4" VerticalScrollBarVisibility="Auto"/>

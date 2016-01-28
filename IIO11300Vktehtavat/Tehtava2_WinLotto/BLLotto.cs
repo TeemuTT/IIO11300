@@ -38,7 +38,9 @@ namespace Tehtava2_WinLotto
                     break;
             }
         }
+        #endregion
 
+        #region Metodit
         private void Initialize(int primaryNumbers, int secondaryNumbers, int primaryLimit, int secondaryLimit)
         {
             random = new Random();
@@ -47,9 +49,7 @@ namespace Tehtava2_WinLotto
             this.primaryLimit = primaryLimit;
             this.secondaryLimit = secondaryLimit;
         }
-        #endregion
 
-        #region Metodit
         public string Draw()
         {
             List<int> primary = new List<int>();

@@ -5,10 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H1MediaPlayer"
         mc:Ignorable="d"
-        Title="MediaPlayer" Height="350" Width="525" FontFamily="Consolas" FontSize="16">
+        Title="MediaPlayer" Height="668.635" Width="854.006" FontFamily="Consolas" FontSize="16">
     <Grid>
-        <Button x:Name="btnPlay" Content="Play" Margin="10,10,10,0" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left"/>
-        <Button x:Name="btnPause" Content="Pause" Margin="90,10,10,0" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left"/>
-        <Button x:Name="btnStop" Content="Stop" Margin="170,10,10,0" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left"/>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txtPath" TextWrapping="Wrap" Width="400" Margin="10" LostFocus="txtPath_LostFocus"/>
+                <Button x:Name="btnBrowse" Content="Browse" Width="100" Margin="10,10,0,10" Click="btnBrowse_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnPlay" Content="Play" Margin="10" Width="100" Click="btnPlay_Click"/>
+                <Button x:Name="btnPause" Content="Pause" Margin="10" Width="100" Click="btnPause_Click" IsEnabled="False"/>
+                <Button x:Name="btnStop" Content="Stop" Margin="10" Width="100" Click="btnStop_Click" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel>
+                <MediaElement x:Name="mediaElement" Margin="10" Height="532" LoadedBehavior="Manual"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
