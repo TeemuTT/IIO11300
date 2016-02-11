@@ -39,7 +39,7 @@ namespace H1MediaPlayer
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
             }
         }
 
