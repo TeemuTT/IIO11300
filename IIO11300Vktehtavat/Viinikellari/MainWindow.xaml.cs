@@ -2,7 +2,7 @@
 * Copyright (C) JAMK/IT/Teemu Tuomela
 * This file is part of the IIO11300 course.
 * Created: 19.2.2016
-* Modified: 21.2.2016
+* Modified: 24.2.2016
 * Authors: Teemu Tuomela
 */
 
@@ -15,9 +15,11 @@ using System.Configuration;
 using Microsoft.Win32;
 using System.IO;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace Viinikellari
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -73,30 +75,6 @@ namespace Viinikellari
             }
         }
 
-        // Maan valinnan jälkeen näytetään vain tietyt viinit.
-        private void cbCountrySelector_DropDownClosed(object sender, EventArgs e)
-        {
-            CollectionViewSource collection = Resources["ViiniCollection"] as CollectionViewSource;
-            collection.View.Filter = WineFilter;
-            tbStatus.Text = "Näytetään viinit maasta '" + cbCountrySelector.Text + "'";
-        }
-
-        // Suodatin jolla suodatetaan viinit maan mukaan.
-        private bool WineFilter(object o)
-        {
-            if (cbCountrySelector.Text.Equals("Kaikki")) return true;
-
-            XmlElement wine = o as XmlElement;
-            if (wine["maa"].InnerText.Equals(cbCountrySelector.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         // Lisätään uusi viini listaan. Annettava vähintään nimi ja valmistusmaa.
         private void btnNewWine_Click(object sender, RoutedEventArgs e)
         {
@@ -124,6 +102,7 @@ namespace Viinikellari
             tbName.Text = "";
             tbCountry.Text = "";
             tbPoints.Text = "";
+            UpdateComboBox();
         }
 
         // Tallennetaan listaan tehdyt muutokset levylle.
@@ -150,6 +129,7 @@ namespace Viinikellari
         }
 
         // Tallennetaan viinitiedoston sijainti App.Configiin.
+        // Ei toimi debug-ajossa.
         private static void UpdateAppSetting(string key, string value)
         {
             Configuration cfg = ConfigurationManager.OpenExeConfiguration(0);
@@ -173,11 +153,62 @@ namespace Viinikellari
                 dataProvider.Document.SelectSingleNode("viinikellari")
                     .RemoveChild((dataGrid.SelectedItem as XmlNode));
                 tbStatus.Text = "Viini poistettu";
+                UpdateComboBox();
             }
         }
 
-        // Poistetaan duplikaatit aina kun avataan. Ei ehkä näin...
-        private void cbCountrySelector_DropDownOpened(object sender, EventArgs e)
+        // Maan valinnan jälkeen suodatetaan maan mukaan.
+        // Vinkkiä löydetty: https://social.msdn.microsoft.com/Forums/vstudio/en-US/41654b26-eaf7-4bfb-81e8-e1bc4c94a8e5/filter-a-datagrid-from-textbox?forum=wpf
+        private void cbCountrySelector_DropDownClosed(object sender, EventArgs e)
+        {
+            CollectionViewSource collection = Resources["ViiniCollection"] as CollectionViewSource;
+            if (cbCountrySelector.Text.Equals("Kaikki"))
+            {
+                collection.View.Filter = null;
+            }
+            else
+            {
+                collection.View.Filter = item =>
+                {
+                    XmlElement wine = item as XmlElement;
+                    if (wine["maa"].InnerText.Equals(cbCountrySelector.Text)) return true;
+                    else return false;
+                };
+            }
+
+            tbStatus.Text = "Näytetään viinit maasta '" + cbCountrySelector.Text + "'";
+        }
+
+        // Jos DataGridissä muokataan maata, täytyy päivittää maavalitsin.
+        // Tässä vaiheessa maa ei ole vielä päivittynyt joten kutsutaan
+        // DataGrid.CommitEdit(). CommitEdit täällä aiheuttaa loputtoman
+        // silmukan joten pidetään boolean arvolla homma kurissa.
+        // Vinkkiä löydetty: http://stackoverflow.com/a/6247930
+        private bool recursion = false;
+        private void dataGrid_CellEditEnding(object sender, System.Windows.Controls.DataGridCellEditEndingEventArgs e)
+        {
+            if (!e.Column.Header.Equals("Valmistusmaa"))
+            {
+                return;
+            }
+
+            if (!recursion)
+            {
+                recursion = true;
+                dataGrid.CommitEdit(DataGridEditingUnit.Row, true);
+                recursion = false;
+                UpdateComboBox();
+            }
+        }
+
+        // Uusi tiedosto -> poista duplikaatit maista.
+        private void XmlDataProvider_DataChanged(object sender, EventArgs e)
+        {
+            UpdateComboBox();
+        }
+
+        // Poistetaan maanvalitsimesta duplikaatit.
+        private void UpdateComboBox()
         {
             cbCountrySelector.ItemsSource = dataProvider.Document.SelectNodes("/viinikellari/wine/maa");
             List<string> countries = new List<string>() { "Kaikki" };
