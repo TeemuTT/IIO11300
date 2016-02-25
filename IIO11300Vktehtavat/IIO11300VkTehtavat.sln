@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tehtava1", "Tehtava1\Tehtava1.csproj", "{BBFDB3F8-2232-4C51-A154-1DFFF2E75FE7}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlMovies", "XmlMovies\XmlMovies.csproj", "{E885490A-4B3F-43B9-87D8-19E45D0D5B0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viinikellari", "Viinikellari\Viinikellari.csproj", "{6564B841-DB53-4784-8F5A-38AEB3AC1960}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H6DataBinding", "H6DataBinding\H6DataBinding.csproj", "{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{6564B841-DB53-4784-8F5A-38AEB3AC1960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6564B841-DB53-4784-8F5A-38AEB3AC1960}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6564B841-DB53-4784-8F5A-38AEB3AC1960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
