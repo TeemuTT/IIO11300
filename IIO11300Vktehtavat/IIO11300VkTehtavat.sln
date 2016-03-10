@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viinikellari", "Viinikellar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H6DataBinding", "H6DataBinding\H6DataBinding.csproj", "{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H7adonetconsole", "H7adonetconsole\H7adonetconsole.csproj", "{BCBBC0E8-20EC-4FC9-81FE-097FB1BB1748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H8adonetWPF", "H8adonetWPF\H8adonetWPF.csproj", "{C9414054-4E06-4D6F-9243-6032A3AA6CA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC814B64-2FBC-4F4D-97E0-BF1CB81C7728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBBC0E8-20EC-4FC9-81FE-097FB1BB1748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBBC0E8-20EC-4FC9-81FE-097FB1BB1748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBBC0E8-20EC-4FC9-81FE-097FB1BB1748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBBC0E8-20EC-4FC9-81FE-097FB1BB1748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9414054-4E06-4D6F-9243-6032A3AA6CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9414054-4E06-4D6F-9243-6032A3AA6CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9414054-4E06-4D6F-9243-6032A3AA6CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9414054-4E06-4D6F-9243-6032A3AA6CA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

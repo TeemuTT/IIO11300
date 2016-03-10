@@ -1,0 +1,24 @@
+﻿<Window x:Class="H6DataBinding.PlayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:H6DataBinding"
+        mc:Ignorable="d"
+        Title="PlayerWindow" Height="300" Width="300" SizeToContent="Width">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="stackLeft" Margin="10,10,10,0" MinWidth="100">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Pelaaja:" Padding="0"/>
+            <TextBlock x:Name="tbPlayer" TextWrapping="Wrap" Text="{Binding Path=NameAndNumber, Mode=OneWay}"/>
+            <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="Nimi:"/>
+            <TextBox x:Name="txtName" TextWrapping="Wrap" Text="{Binding Path=Name, Mode=TwoWay}"/>
+            <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Numero:"/>
+            <TextBox x:Name="txtNumber" TextWrapping="Wrap" Text="{Binding Path=Number, Mode=TwoWay}"/>
+        </StackPanel>
+        <DataGrid x:Name="dataGrid" Grid.Column="1" Margin="10" SelectionChanged="dataGrid_SelectionChanged" CanUserAddRows="True"/>
+    </Grid>
+</Window>

@@ -1,8 +1,8 @@
-﻿<Application x:Class="H6DataBinding.App"
+﻿<Application x:Class="H8adonetWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:H6DataBinding"
-             StartupUri="PlayerWindow.xaml">
+             xmlns:local="clr-namespace:H8adonetWPF"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

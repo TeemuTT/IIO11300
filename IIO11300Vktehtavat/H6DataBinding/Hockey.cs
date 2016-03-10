@@ -6,12 +6,80 @@
 */
 
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace H6DataBinding
 {
-    public class HockeyPlayer
+    public static class TestHockeyBench
     {
+        public static List<HockeyPlayer> GetThreePlayers()
+        {
+            List<HockeyPlayer> players = new List<HockeyPlayer>()
+            {
+                new HockeyPlayer("Jarkko Immonen", "26"),
+                new HockeyPlayer("Teemu Selänne", "8")
+            };
+            return players;
+        }
+    }
 
+    public class HockeyPlayer : INotifyPropertyChanged
+    {
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                Notify("Name");
+                Notify("NameAndNumber");
+            }
+        }
+
+        private string number;
+
+        public string Number
+        {
+            get
+            {
+                return number;
+            }
+            set
+            {
+                number = value;
+                Notify("Number");
+                Notify("NameAndNumber");
+            }
+        }
+
+        public string NameAndNumber
+        {
+            get
+            {
+                return Name + ", " + Number;
+            }
+        }
+        public HockeyPlayer()
+        {
+
+        }
+
+        public HockeyPlayer(string name, string number)
+        {
+            this.name = name;
+            this.number = number;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void Notify(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
     }
 
     public class HockeyTeam
