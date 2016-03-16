@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Viinikellari.Properties {
+namespace Viiniasiakkaat.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -23,15 +23,13 @@ namespace Viinikellari.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Server=eight.labranet.jamk.fi;Database=Viini;User=koodari;Password=koodari13")]
-        public string ConnStr {
+        public string Tietokanta {
             get {
-                return ((string)(this["ConnStr"]));
-            }
-            set {
-                this["ConnStr"] = value;
+                return ((string)(this["Tietokanta"]));
             }
         }
     }
