@@ -1,0 +1,40 @@
+﻿<Window x:Class="BookshopORM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookshopORM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" SizeToContent="Width">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="307*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="5,0">
+            <Button x:Name="button" Content="Hae testikirjat" Click="button_Click" FontSize="14.667"/>
+            <Button x:Name="button1" Content="Hae kirjat SQL Server" FontSize="14.667" Click="button1_Click"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Grid.Column="1" Margin="1,0,0,0" VerticalAlignment="Top">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Tuote" Width="50" Height="20" FontSize="14.667"/>
+            <TextBlock TextWrapping="Wrap" Text="Nimi" Width="50" Height="20" FontSize="14.667"/>
+            <TextBlock TextWrapping="Wrap" Text="Kirjailija" Width="50" Height="20" FontSize="14.667"/>
+            <TextBlock TextWrapping="Wrap" Text="Maa" Width="50" Height="20" FontSize="14.667"/>
+            <TextBlock TextWrapping="Wrap" Text="Vuosi" Width="50" Height="20" FontSize="14.667"/>
+        </StackPanel>
+        <StackPanel Name="spRigth" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="5,0,10,0" Height="172">
+            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="{Binding Path=Name}" Height="20" FontSize="14.667"/>
+            <TextBox Name="tbName" TextWrapping="Wrap" Width="200" Text="{Binding Path=Name}" Height="20" FontSize="14.667"/>
+            <TextBox Name="tbAuthor" TextWrapping="Wrap" Width="200" Text="{Binding Path=Author}" Height="20" FontSize="14.667"/>
+            <TextBox Name="tbCountry" TextWrapping="Wrap" Width="200" Text="{Binding Path=Country}" Height="20" FontSize="14.667"/>
+            <TextBox Name="tbYear" TextWrapping="Wrap" Width="200" Text="{Binding Path=Year}" Height="20" FontSize="14.667"/>
+            <Button Name="btnSave" Content="Tallenna" Height="24" Width="200" FontSize="14.667" Click="btnSave_Click"/>
+            <Button Name="btnNew" Content="Uusi" Width="200" FontSize="14.667" Click="btnNew_Click"/>
+            <Button Name="btnRemove" Content="Poista" Width="200" FontSize="14.667" Click="btnRemove_Click"/>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="true" ItemsSource="{Binding}" x:Name="dataGrid" Margin="5,177,5,5" Grid.ColumnSpan="3" HorizontalAlignment="Left" MinWidth="410" SelectionChanged="dataGrid_SelectionChanged"/>
+
+    </Grid>
+</Window>
